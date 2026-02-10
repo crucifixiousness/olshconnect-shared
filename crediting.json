@@ -1,0 +1,246 @@
+[{
+  "table_name": "course_equivalencies",
+  "column_name": "ce_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": "nextval('course_equivalencies_ce_id_seq'::regclass)",
+  "is_nullable": "NO"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "tor_request_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "external_course_code",
+  "data_type": "character varying",
+  "character_maximum_length": 50,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "external_course_name",
+  "data_type": "character varying",
+  "character_maximum_length": 200,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "external_grade",
+  "data_type": "numeric",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "external_units",
+  "data_type": "numeric",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "equivalent_course_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "equivalent_course_code",
+  "data_type": "character varying",
+  "character_maximum_length": 50,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "equivalent_course_name",
+  "data_type": "character varying",
+  "character_maximum_length": 200,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "credits_granted",
+  "data_type": "numeric",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "source_school",
+  "data_type": "character varying",
+  "character_maximum_length": 200,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "course_equivalencies",
+  "column_name": "source_academic_year",
+  "data_type": "character varying",
+  "character_maximum_length": 20,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "sct_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": "nextval('student_credit_transfers_sct_id_seq'::regclass)",
+  "is_nullable": "NO"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "student_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "course_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "tor_request_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "external_course_code",
+  "data_type": "character varying",
+  "character_maximum_length": 50,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "external_course_name",
+  "data_type": "character varying",
+  "character_maximum_length": 200,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "external_grade",
+  "data_type": "numeric",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "credits_earned",
+  "data_type": "numeric",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "transfer_grade",
+  "data_type": "character varying",
+  "character_maximum_length": 10,
+  "column_default": "'TR'::character varying",
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "status",
+  "data_type": "character varying",
+  "character_maximum_length": 20,
+  "column_default": "'active'::character varying",
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "source_school",
+  "data_type": "character varying",
+  "character_maximum_length": 200,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "student_credit_transfers",
+  "column_name": "source_academic_year",
+  "data_type": "character varying",
+  "character_maximum_length": 20,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": "nextval('tor_evaluation_requests_id_seq'::regclass)",
+  "is_nullable": "NO"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "student_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "program_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "year_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "semester",
+  "data_type": "character varying",
+  "character_maximum_length": 20,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "tor_document_path",
+  "data_type": "text",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "status",
+  "data_type": "character varying",
+  "character_maximum_length": 20,
+  "column_default": "'pending'::character varying",
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "program_head_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "program_head_reviewed_at",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "registrar_id",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "tor_evaluation_requests",
+  "column_name": "registrar_approved_at",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}]

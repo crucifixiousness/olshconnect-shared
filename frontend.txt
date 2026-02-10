@@ -1,0 +1,281 @@
+# OLSHCO System - Data Flow Diagram (DFD)
+
+## System Overview
+The OLSHCO (Our Lady of the Sacred Heart College) system is a comprehensive educational management platform that handles student enrollment, course management, grading, payments, and administrative functions.
+
+## Context Level DFD (Level 0)
+
+### External Entities
+- **Students** - Individuals enrolled or seeking enrollment
+- **Staff/Instructors** - Faculty and administrative personnel  
+- **Administrators** - System administrators with full access
+- **External Payment Systems** - Third-party payment processors
+- **Document Storage** - File storage systems
+
+### Central System
+- **OLSHCO System** - Main educational management platform
+
+### Data Flows
+- Students ↔ OLSHCO System (enrollment, grades, payments, documents)
+- Staff/Instructors ↔ OLSHCO System (course management, grading, schedules)
+- Administrators ↔ OLSHCO System (system management, reports)
+- External Payment Systems ↔ OLSHCO System (payment confirmations, transaction data)
+- Document Storage ↔ OLSHCO System (document uploads, retrievals)
+
+---
+
+## Level 1 DFD - Main Processes
+
+### External Entities
+1. **Students** - Student users
+2. **Staff/Instructors** - Faculty and staff users
+3. **Administrators** - System administrators
+4. **Registrar** - Enrollment and academic record staff
+5. **Finance Staff** - Financial transaction personnel
+6. **Program Heads** - Academic program leaders
+7. **External Payment Systems** - Payment gateways
+8. **Document Storage** - File management systems
+
+### Main Processes
+1. **P1: User Authentication & Authorization** - Login, role assignment, access control
+2. **P2: Student Management** - Profile creation, updates, document management
+3. **P3: Enrollment Management** - Application processing, verification, status updates
+4. **P4: Course Management** - Course creation, instructor assignment, scheduling
+5. **P5: Academic Records** - Grade management, transcript generation
+6. **P6: Financial Management** - Payment processing, balance tracking, tuition management
+7. **P7: Document Management** - Document requests, processing, delivery
+8. **P8: Reporting & Analytics** - Dashboard data, reports, analytics
+
+### Data Stores
+1. **DS1: Student Database** - Student profiles and personal information
+2. **DS2: Enrollment Database** - Enrollment applications and status
+3. **DS3: Course Database** - Course information and assignments
+4. **DS4: Financial Database** - Payment records and transactions
+5. **DS5: Academic Records** - Grades, transcripts, academic history
+6. **DS6: Document Database** - Student documents and forms
+7. **DS7: User Management** - User accounts and authentication
+8. **DS8: Security Logs** - System access and security events
+
+### Data Flows
+
+#### Authentication Flows
+- Students → P1: Login Credentials
+- Staff/Instructors → P1: Staff Credentials  
+- Administrators → P1: Admin Credentials
+- P1 → DS7: User Info
+- P1 → DS8: Auth Logs
+
+#### Student Management Flows
+- Students → P2: Personal Info
+- P2 → DS1: Student Data
+- P2 → DS1: Profile Updates
+
+#### Enrollment Flows
+- Students → P3: Enrollment Application
+- P3 → DS2: Enrollment Data
+- P3 → DS6: Document Uploads
+- Registrar → P3: Enrollment Verification
+- P3 → DS2: Verification Status
+
+#### Course Management Flows
+- Program Heads → P4: Course Assignments
+- P4 → DS3: Course Data
+- P4 → DS3: Instructor Assignments
+
+#### Academic Records Flows
+- Staff/Instructors → P5: Grade Input
+- P5 → DS5: Academic Records
+- P5 → DS5: Grade Updates
+
+#### Financial Flows
+- Students → P6: Payment Information
+- Finance Staff → P6: Payment Processing
+- P6 → DS4: Financial Records
+- P6 → DS2: Payment Status
+- External Payment Systems → P6: Payment Confirmations
+
+#### Document Flows
+- Students → P7: Document Requests
+- Registrar → P7: Document Processing
+- P7 → DS6: Document Status
+
+#### Reporting Flows
+- P8 → Administrators: Reports & Analytics
+- P8 → Registrar: Dashboard Data
+- P8 → Finance Staff: Dashboard Data
+- P8 → Program Heads: Dashboard Data
+
+---
+
+## Level 2 DFD - Detailed Process Breakdown
+
+### 2.1 User Authentication & Authorization
+
+#### Sub-processes
+1. **P1.1: Input Credentials** - User enters username/password
+2. **P1.2: Validate Credentials** - System checks against user database
+3. **P1.3: Generate JWT Token** - Creates authentication token
+4. **P1.4: Role Assignment** - Assigns user permissions
+5. **P1.5: Log Failed Attempts** - Records unsuccessful login attempts
+
+#### Data Flows
+- Users → P1.1: Credentials
+- P1.1 → P1.2: Credentials
+- P1.2 → DS1: Query User Database
+- P1.2 → P1.3: Valid Credentials
+- P1.3 → P1.4: JWT Token
+- P1.4 → DS2: Role Permissions
+- P1.4 → Users: Access Granted
+- P1.2 → P1.5: Failed Credentials
+- P1.5 → DS3: Security Logs
+
+### 2.2 Student Management
+
+#### Sub-processes
+1. **P2.1: Profile Creation** - New student profile setup
+2. **P2.2: Profile Updates** - Modify existing student information
+3. **P2.3: Document Uploads** - Student document management
+4. **P2.4: Profile Retrieval** - Access student information
+
+#### Data Flows
+- Students → P2.1: Personal Information
+- P2.1 → DS1: Student Profiles
+- Students → P2.2: Update Information
+- P2.2 → DS1: Profile Updates
+- Students → P2.3: Documents
+- P2.3 → DS2: Student Documents
+- P2.4 → DS1: Query Student Profiles
+- P2.4 → Students: Profile Data
+
+### 2.3 Enrollment Management
+
+#### Sub-processes
+1. **P3.1: Submit Enrollment** - Student enrollment application
+2. **P3.2: Document Verification** - Review required documents
+3. **P3.3: Update Status** - Modify enrollment status
+4. **P3.4: Block Assignment** - Assign to program blocks
+5. **P3.5: Payment Status Update** - Update financial status
+
+#### Data Flows
+- Students → P3.1: Enrollment Application
+- P3.1 → DS1: Enrollment Applications
+- P3.2 → DS1: Query Applications
+- P3.2 → DS2: Student Documents
+- P3.2 → P3.3: Verification Results
+- P3.3 → DS1: Status Updates
+- P3.3 → DS3: Enrollment Status
+- P3.4 → DS1: Query Applications
+- P3.4 → DS4: Program Blocks
+- P3.5 → DS1: Payment Status
+- P3.5 → DS5: Financial Records
+
+### 2.4 Course Management
+
+#### Sub-processes
+1. **P4.1: Course Creation** - New course setup
+2. **P4.2: Instructor Assignment** - Assign teachers to courses
+3. **P4.3: Grade Management** - Handle student grades
+4. **P4.4: Schedule Management** - Manage class schedules
+
+#### Data Flows
+- Program Heads → P4.1: Course Information
+- P4.1 → DS1: Course Database
+- Program Heads → P4.2: Instructor Assignments
+- P4.2 → DS2: Instructor Assignments
+- Instructors → P4.3: Grade Input
+- P4.3 → DS3: Academic Records
+- P4.4 → DS1: Query Courses
+- P4.4 → DS4: Class Schedules
+
+### 2.5 Financial Management
+
+#### Sub-processes
+1. **P5.1: Payment Submission** - Student payment processing
+2. **P5.2: Payment Processing** - Finance staff payment handling
+3. **P5.3: Payment Confirmation** - External payment confirmations
+4. **P5.4: Balance Calculation** - Student balance computation
+5. **P5.5: Tuition Management** - Tuition fee administration
+
+#### Data Flows
+- Students → P5.1: Payment Information
+- P5.1 → DS1: Payment Records
+- Finance Staff → P5.2: Payment Processing
+- P5.2 → DS1: Update Payment Records
+- P5.2 → DS2: Financial Database
+- External Systems → P5.3: Payment Confirmations
+- P5.3 → DS1: Payment Status
+- P5.4 → DS2: Query Financial Records
+- P5.4 → DS3: Student Balances
+- P5.5 → DS4: Tuition Fees
+
+---
+
+## Data Dictionary
+
+### External Entities
+- **Students**: Individuals enrolled or seeking enrollment
+- **Staff/Instructors**: Faculty and administrative personnel
+- **Administrators**: System administrators with full access
+- **Registrar**: Staff handling enrollment and academic records
+- **Finance Staff**: Personnel managing financial transactions
+- **Program Heads**: Academic leaders managing specific programs
+- **External Payment Systems**: Third-party payment processors
+- **Document Storage**: File storage systems
+
+### Data Stores
+- **Student Database**: Student profiles, personal information
+- **Enrollment Database**: Enrollment applications and status
+- **Course Database**: Course information and assignments
+- **Financial Database**: Payment records and transactions
+- **Academic Records**: Grades, transcripts, academic history
+- **Document Database**: Student documents and forms
+- **User Management**: User accounts and authentication
+- **Security Logs**: System access and security events
+
+### Key Data Flows
+1. **Authentication Flow**: Credentials → Validation → Token Generation → Role Assignment
+2. **Enrollment Flow**: Application → Verification → Status Update → Block Assignment
+3. **Payment Flow**: Payment Submission → Processing → Confirmation → Balance Update
+4. **Academic Flow**: Grade Input → Record Update → Transcript Generation
+5. **Document Flow**: Request → Processing → Status Update → Delivery
+
+## System Characteristics
+- **Multi-role Access Control**: Different permission levels for different user types
+- **Real-time Updates**: Live data synchronization across modules
+- **Secure Authentication**: JWT-based token system with role-based access
+- **Comprehensive Logging**: Audit trails for security and compliance
+- **Modular Architecture**: Separate modules for different functional areas
+- **API-based Communication**: RESTful API endpoints for data exchange
+
+## Conversion Instructions
+
+### For draw.io (diagrams.net)
+1. Create a new diagram
+2. Use the "Entity" shape for external entities (rectangles)
+3. Use the "Process" shape for processes (circles/rounded rectangles)
+4. Use the "Data Store" shape for data stores (open rectangles)
+5. Use arrows for data flows
+6. Add labels on arrows for data descriptions
+
+### For Lucidchart
+1. Create a new diagram
+2. Use "Rectangle" for external entities
+3. Use "Circle" or "Rounded Rectangle" for processes
+4. Use "Open Rectangle" for data stores
+5. Use "Connector" lines for data flows
+6. Add text labels on connectors
+
+### For Microsoft Visio
+1. Create a new diagram
+2. Use "Rectangle" shapes for external entities
+3. Use "Circle" or "Rounded Rectangle" for processes
+4. Use "Database" shapes for data stores
+5. Use "Connector" lines for data flows
+6. Add text callouts for data descriptions
+
+### For Any Other Tool
+- **External Entities**: Represent as rectangles
+- **Processes**: Represent as circles or rounded rectangles
+- **Data Stores**: Represent as open rectangles or cylinders
+- **Data Flows**: Represent as arrows with labels
+- **Use consistent colors** for different types of elements
